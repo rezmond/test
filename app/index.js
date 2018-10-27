@@ -5,7 +5,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 
 import store from './store';
 import { loadData } from './actions';
-import { FilmsList } from './components';
+import { Films } from './screens';
 
 EStyleSheet.build({
   $border: '#E2E2E2',
@@ -18,7 +18,7 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <FilmsList />
+        <Films />
       </Provider>
     );
   }
