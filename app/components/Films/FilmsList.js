@@ -7,39 +7,53 @@ import {
   Image,
 } from 'react-native';
 
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { getStateSlice } from './reducer';
+import { onFilmOpen } from './actions';
+import { getFilmsList } from './reducer';
 import styles from './styles';
 
 function mapStateToProps(state) {
-  const stateSlice = getStateSlice(state);
+  const filmsList = getFilmsList(state);
   return {
-    items: stateSlice.list,
+    items: filmsList,
   };
 }
 
-function renderItem({ item }) {
-  return <Text>{item.title}</Text>;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    onPressFilm: onFilmOpen,
+  }, dispatch);
 }
 
 function keyExtractor(item) {
   return item.id;
 }
 
-@connect(mapStateToProps)
+@connect(mapStateToProps, mapDispatchToProps)
 class FilmsList extends React.PureComponent {
   static propTypes={
     items: PropTypes.arrayOf(PropTypes.object).isRequired,
+    onPressFilm: PropTypes.func.isRequired,
   };
 
+  _renderItem = ({ item }) => {
+    const { onPressFilm } = this.props;
+    return (
+      <ListItem
+        {...item}
+        onPress={onPressFilm}
+      />
+    );
+  };
 
   render() {
     const { items } = this.props;
     return (
       <FlatList
         data={items}
-        renderItem={renderItem}
+        renderItem={this._renderItem}
         keyExtractor={keyExtractor}
       />
     );

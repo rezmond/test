@@ -6,3 +6,9 @@ export function setFilmsList(films) {
     payload: films,
   };
 }
+
+export function onFilmOpen(id) {
+  return () => {
+    console.log(id);
+  };
+}
