@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 
 import store from './store';
 import { loadData } from './actions';
-import { CatsList } from './components';
+import { FilmsList } from './components';
 
 
 const styles = StyleSheet.create({
@@ -23,7 +23,7 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <CatsList />
+        <FilmsList />
       </Provider>
     );
   }

@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  FlatList,
   View,
   Text,
+  Image,
 } from 'react-native';
 
 import { connect } from 'react-redux';
 
 import { getStateSlice } from './reducer';
+import styles from './styles';
 
 function mapStateToProps(state) {
   const stateSlice = getStateSlice(state);
@@ -16,21 +19,31 @@ function mapStateToProps(state) {
   };
 }
 
+function renderItem({ item }) {
+  return <Text>{item.title}</Text>;
+}
+
+function keyExtractor(item) {
+  return item.id;
+}
+
 @connect(mapStateToProps)
-class CatsList extends React.PureComponent {
+class FilmsList extends React.PureComponent {
   static propTypes={
     items: PropTypes.arrayOf(PropTypes.object).isRequired,
   };
+
+
   render() {
     const { items } = this.props;
     return (
-      <View>
-        <Text>{
-          items.map(i => i.url).join('\n')
-        }</Text>
-      </View>
+      <FlatList
+        data={items}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+      />
     );
   }
 }
 
-export default CatsList;
+export default FilmsList;

@@ -1,8 +1,8 @@
 export const SET = 'app/SET';
 
-export function setCatsList(cats) {
+export function setFilmsList(films) {
   return {
     type: SET,
-    payload: cats,
+    payload: films,
   };
 }

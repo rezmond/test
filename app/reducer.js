@@ -1,10 +1,10 @@
 
 import { combineReducers } from 'redux';
 
-import catsReducer from './components/Cats/reducer';
+import filmsReducer from './components/Films/reducer';
 
 const reducer = combineReducers({
-  cats: catsReducer,
+  films: filmsReducer,
 });
 
 export default reducer;

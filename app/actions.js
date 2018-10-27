@@ -1,15 +1,15 @@
-import { fetchCatsListPage } from './api';
-import { setCatsList } from './components/Cats/actions';
+import { fetchFilmsListPage } from './api';
+import { setFilmsList } from './components/Films/actions';
 
 export function loadData() {
   return async dispatch => {
-    const { json, response } = await fetchCatsListPage();
+    const { json, response } = await fetchFilmsListPage();
 
     if (response.status !== 200) {
       console.log("error", json);
     }
 
-    dispatch(setCatsList(json))
+    dispatch(setFilmsList(json))
   };
 }
 

@@ -16,5 +16,5 @@ export default function reducer(state = INIT, action) {
 }
 
 export function getStateSlice(state) {
-  return state.cats;
+  return state.films;
 }
