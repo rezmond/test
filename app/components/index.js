@@ -1,1 +1,1 @@
-
+export { CatsList } from './Cats';
