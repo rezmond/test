@@ -6,7 +6,8 @@ export function loadData() {
     const { data, response } = await fetchFilmsListPage();
 
     if (response.status !== 200) {
-      console.log("error", data);
+      console.log("error");
+      return;
     }
 
     dispatch(setFilmsList(data));

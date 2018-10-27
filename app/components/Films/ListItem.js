@@ -20,10 +20,7 @@ export default class ListItem extends React.PureComponent {
   };
 
   render() {
-    const {
-      title,
-      onPress,
-    } = this.props;
+    const { title } = this.props;
     return (
       <TouchableHighlight
         underlayColor={styles.$underlayColor}

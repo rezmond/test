@@ -1,17 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  FlatList,
-  View,
-  Text,
-} from 'react-native';
+import { FlatList } from 'react-native';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { onFilmOpen } from './actions';
 import { getFilmsList } from './reducer';
-import styles from './styles';
 import Separator from './Separator';
 import ListItem from './ListItem';
 
