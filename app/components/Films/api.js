@@ -2,7 +2,7 @@ import {
   normalize,
   schema,
 } from 'normalizr';
-import { fetch } from './utils';
+import { fetch } from '../../utils';
 
 const filmsSchema = new schema.Entity('films');
 
