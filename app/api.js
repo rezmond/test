@@ -15,6 +15,13 @@ export function fetchFilmsListPage() {
   return fetch(url)
     .then(response => response.json()
       .then((json) => {
+        if (response.status !== 200) {
+          return {
+            json,
+            response,
+          };
+        }
+
         const {
           result: ids,
           entities: {
