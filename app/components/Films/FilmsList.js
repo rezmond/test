@@ -35,6 +35,7 @@ function keyExtractor(item) {
 @connect(mapStateToProps, mapDispatchToProps)
 class FilmsList extends React.PureComponent {
   static propTypes={
+    style: PropTypes.number,
     items: PropTypes.arrayOf(PropTypes.object).isRequired,
     onPressFilm: PropTypes.func.isRequired,
   };
@@ -50,9 +51,11 @@ class FilmsList extends React.PureComponent {
   };
 
   render() {
-    const { items } = this.props;
+    const { style, items } = this.props;
+    const styleList = [style];
     return (
       <FlatList
+        style={styleList}
         data={items}
         renderItem={this._renderItem}
         keyExtractor={keyExtractor}
