@@ -4,7 +4,6 @@ import {
   FlatList,
   View,
   Text,
-  Image,
 } from 'react-native';
 
 import { bindActionCreators } from 'redux';
@@ -13,6 +12,8 @@ import { connect } from 'react-redux';
 import { onFilmOpen } from './actions';
 import { getFilmsList } from './reducer';
 import styles from './styles';
+import Separator from './Separator';
+import ListItem from './ListItem';
 
 function mapStateToProps(state) {
   const filmsList = getFilmsList(state);
@@ -55,6 +56,7 @@ class FilmsList extends React.PureComponent {
         data={items}
         renderItem={this._renderItem}
         keyExtractor={keyExtractor}
+        ItemSeparatorComponent={Separator}
       />
     );
   }

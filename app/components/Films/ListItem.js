@@ -26,6 +26,8 @@ export default class ListItem extends React.PureComponent {
     } = this.props;
     return (
       <TouchableHighlight
+        underlayColor={styles.$underlayColor}
+        style={styles.listItem}
         onPress={this._handlePress}
       >
         <Text style={styles.listItemText}>{title}</Text>

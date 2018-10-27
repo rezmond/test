@@ -1,19 +1,14 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
 import { Provider } from 'react-redux';
+
+import EStyleSheet from 'react-native-extended-stylesheet';
 
 import store from './store';
 import { loadData } from './actions';
 import { FilmsList } from './components';
 
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+EStyleSheet.build({
+  $border: '#E2E2E2',
 });
 
 export default class App extends React.Component {
