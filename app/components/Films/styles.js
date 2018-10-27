@@ -18,7 +18,7 @@ export default EStyleSheet.create({
     height: StyleSheet.hairlineWidth,
   },
   listItemText: {
-    color: '#787878',
+    color: '#fff',
     fontSize: 16,
   },
   listItem: {
