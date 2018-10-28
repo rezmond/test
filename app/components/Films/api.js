@@ -11,7 +11,7 @@ const SCHEMAS = {
 };
 
 export async function fetchFilmsListPage() {
-  const url = 'https://ghibliapi.herokuapp.com/films';
+  const url = 'https://ghibliapi.herokuapp.com/films?fields=title,id,url';
   const { response, data } = await fetch(url);
   const {
     result: ids,
