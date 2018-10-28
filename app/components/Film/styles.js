@@ -8,4 +8,9 @@ export default EStyleSheet.create({
   field: {
     marginBottom: 20,
   },
+  image: {
+    height: 200,
+    width: null,
+    flex: 1,
+  },
 });

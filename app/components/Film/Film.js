@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Image } from 'react-native';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -14,6 +15,7 @@ import { withDataLoader } from '../../utils';
 import { getStateSlice } from './reducer';
 import { openFilm as openFilmAction } from './actions';
 import FilmField from './FilmField';
+import styles from './styles';
 
 function mapStateToProps(state) {
   return getStateSlice(state);
@@ -59,6 +61,14 @@ class Film extends React.PureComponent {
             Film:
             {title}
           </Text>
+        </CardItem>
+        <CardItem cardBody>
+          <Image
+            source={{
+              uri: 'http://lorempixel.com/200/400/cats/#' + new Date().toString(),
+            }}
+            style={styles.image}
+          />
         </CardItem>
         <CardItem>
           <Body>
