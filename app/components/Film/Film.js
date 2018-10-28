@@ -56,21 +56,21 @@ class Film extends React.PureComponent {
 
     return (
       <Card>
-        <CardItem header>
+        <CardItem header style={styles.cardItem}>
           <Text>
             Film:
             {title}
           </Text>
         </CardItem>
-        <CardItem cardBody>
+        <CardItem cardBody style={styles.cardItem}>
           <Image
             source={{
-              uri: 'http://lorempixel.com/200/400/cats/#' + new Date().toString(),
+              uri: 'https://lorempixel.com/200/400/cats/#' + new Date().toString(),
             }}
             style={styles.image}
           />
         </CardItem>
-        <CardItem>
+        <CardItem style={styles.cardItem}>
           <Body>
             <FilmField title="Director">
               {director}

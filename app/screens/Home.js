@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
+import { View, Platform } from 'react-native';
 
 import Expo from 'expo';
 import {
@@ -47,7 +47,10 @@ export default class Home extends React.PureComponent {
       <Container>
         <View style={styles.homeContent}>
           <View style={styles.homeContentLayout}>
-            <Button onPress={this._handleGoToFilmsPress}>
+            <Button
+              success={Platform.OS === 'android'}
+              onPress={this._handleGoToFilmsPress}
+            >
               <Text>Go to films list</Text>
             </Button>
           </View>

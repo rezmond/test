@@ -13,4 +13,12 @@ export default EStyleSheet.create({
     width: null,
     flex: 1,
   },
+  cardItem: {
+    '@media ios': {
+      backgroundColor: '#cce5ff',
+    },
+    '@media android': {
+      backgroundColor: '#d4edda',
+    },
+  },
 });
