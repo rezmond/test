@@ -8,3 +8,7 @@ export default function Films() {
     <FilmsList style={styles.container} />
   );
 }
+
+Films.navigationOptions = {
+  title: 'Films',
+};

@@ -4,7 +4,6 @@ import {
   TouchableHighlight,
   Text,
 } from 'react-native';
-import { Button } from 'native-base';
 
 import styles from './styles';
 
@@ -28,9 +27,7 @@ export default class ListItem extends React.PureComponent {
         style={styles.listItem}
         onPress={this._handlePress}
       >
-        <Button >
-          <Text style={styles.listItemText}>{title}</Text>
-        </Button>
+        <Text style={styles.listItemText}>{title}</Text>
       </TouchableHighlight>
     );
   }

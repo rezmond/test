@@ -18,8 +18,9 @@ export default EStyleSheet.create({
     height: StyleSheet.hairlineWidth,
   },
   listItemText: {
-    color: '#fff',
+    color: '#787878',
     fontSize: 16,
+    paddingHorizontal: 10,
   },
   listItem: {
     marginLeft: ITEM_INDENT,
