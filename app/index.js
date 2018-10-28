@@ -16,10 +16,7 @@ EStyleSheet.build({
 });
 
 const AppWithNavigation = createStackNavigator({
-  Home: {
-    screen: HomeScreen,
-    title: 'Home',
-  },
+  Home: HomeScreen,
   Films: FilmsScreen,
 });
 

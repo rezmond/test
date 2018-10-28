@@ -1,6 +1,6 @@
 import { fetchFilmsListPage } from './api';
 
-export const SET = 'app/SET';
+export const SET = 'app/Films/SET';
 
 export function setFilmsList(films) {
   return {
@@ -18,10 +18,10 @@ export function onFilmOpen(id) {
 export function loadFilmsList() {
   return async (dispatch) => {
     const { data, response } = await fetchFilmsListPage();
-    console.log("response:", response);
 
     if (response.status !== 200) {
-      console.log("error");
+      // status code 400 or 404
+      alert('Something went wrong on request to server');
       return;
     }
 
