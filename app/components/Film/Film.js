@@ -6,11 +6,8 @@ import { connect } from 'react-redux';
 import {
   Card,
   CardItem,
-  Contaner,
-  Content,
   Body,
   Text,
-  Spinner,
 } from 'native-base';
 
 import { withDataLoader } from '../../utils';

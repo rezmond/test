@@ -47,15 +47,12 @@ class FilmsList extends React.PureComponent {
     navigation.navigate('Film', { id });
   };
 
-  _renderItem = ({ item }) => {
-    const { onPressFilm } = this.props;
-    return (
-      <ListItem
-        {...item}
-        onPress={this._handleItemPress}
-      />
-    );
-  };
+  _renderItem = ({ item }) => (
+    <ListItem
+      {...item}
+      onPress={this._handleItemPress}
+    />
+  );
 
   render() {
     const { style, items } = this.props;
