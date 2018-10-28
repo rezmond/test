@@ -17,7 +17,14 @@ export function openFilm(id) {
     const filmEntities = getFilmEntities(state).entities;
     const targetFilm = filmEntities[id];
 
-    const { data } = await api.fetchFilmData(targetFilm.url);
+    const { response, data } = await api.fetchFilmData(targetFilm.url);
+
+    if (response.status !== 200) {
+      // status code 400 or 404
+      alert('Something went wrong on request to server');
+      return;
+    }
+
     dispatch(setFilmData(data));
   };
 }
