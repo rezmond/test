@@ -13,6 +13,7 @@ import {
   Spinner,
 } from 'native-base';
 
+import { withDataLoader } from '../../utils';
 import { getStateSlice } from './reducer';
 import { openFilm as openFilmAction } from './actions';
 import FilmField from './FilmField';
@@ -27,11 +28,15 @@ function mapDispatchToProps(dispatch) {
   }, dispatch);
 }
 
+function handleLoad(props) {
+  const { navigation, openFilm } = props;
+  return openFilm(navigation.getParam('id'));
+}
+
 @connect(mapStateToProps, mapDispatchToProps)
+@withDataLoader(handleLoad)
 class Film extends React.PureComponent {
   static propTypes={
-    navigation: PropTypes.object,
-    openFilm: PropTypes.func.isRequired,
     title: PropTypes.string,
     director: PropTypes.string,
     producer: PropTypes.string,
@@ -39,29 +44,6 @@ class Film extends React.PureComponent {
     releaseDate: PropTypes.string,
     description: PropTypes.string,
   };
-
-  constructor(props) {
-    super(props);
-
-    const { navigation } = props;
-    this.state = {
-      isLoading: true,
-    };
-    this.didBlurSubscription = navigation.addListener('didFocus', this._openFilm);
-  }
-
-  componentWillUnmount() {
-    this.didBlurSubscription.remove();
-  }
-
-  _openFilm = async () => {
-    const { navigation, openFilm } = this.props;
-    await openFilm(navigation.getParam('id'));
-
-    this.setState({
-      isLoading: false,
-    });
-  }
 
   render() {
     const {
@@ -72,11 +54,6 @@ class Film extends React.PureComponent {
       releaseDate,
       rtScore,
     } = this.props;
-    const { isLoading } = this.state;
-
-    if (isLoading) {
-      return <Spinner />;
-    }
 
     return (
       <Card>

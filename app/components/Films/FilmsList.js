@@ -2,8 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FlatList } from 'react-native';
 
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import { withDataLoader } from '../../utils';
+import { loadFilmsList as loadFilmsListAction } from './actions';
 import { getFilmsList } from './reducer';
 import Separator from './Separator';
 import ListItem from './ListItem';
@@ -15,11 +18,23 @@ function mapStateToProps(state, props) {
   };
 }
 
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    loadFilmsList: loadFilmsListAction,
+  }, dispatch);
+}
+
 function keyExtractor(item) {
   return item.id;
 }
 
-@connect(mapStateToProps)
+function handleLoad(props) {
+  const { loadFilmsList } = props;
+  return loadFilmsList();
+}
+
+@connect(mapStateToProps, mapDispatchToProps)
+@withDataLoader(handleLoad)
 class FilmsList extends React.PureComponent {
   static propTypes={
     style: PropTypes.number,

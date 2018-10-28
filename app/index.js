@@ -5,7 +5,6 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 import { createStackNavigator } from 'react-navigation';
 
 import store from './store';
-import { loadData } from './actions';
 import {
   Films as FilmsScreen,
   Home as HomeScreen,
@@ -22,16 +21,10 @@ const AppWithNavigation = createStackNavigator({
   Film: FilmScreen,
 });
 
-export default class App extends React.Component {
-  componentDidMount() {
-    store.dispatch(loadData()).then(() => console.log("ololo"));
-  }
-
-  render() {
-    return (
-      <Provider store={store}>
-        <AppWithNavigation />
-      </Provider>
-    );
-  }
+export default function App() {
+  return (
+    <Provider store={store}>
+      <AppWithNavigation />
+    </Provider>
+  );
 }
