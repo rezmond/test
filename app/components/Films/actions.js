@@ -9,12 +9,6 @@ export function setFilmsList(films) {
   };
 }
 
-export function onFilmOpen(id) {
-  return () => {
-    console.log(id);
-  };
-}
-
 export function loadFilmsList() {
   return async (dispatch) => {
     const { data, response } = await fetchFilmsListPage();

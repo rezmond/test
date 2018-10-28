@@ -9,6 +9,7 @@ import { loadData } from './actions';
 import {
   Films as FilmsScreen,
   Home as HomeScreen,
+  Film as FilmScreen,
 } from './screens';
 
 EStyleSheet.build({
@@ -18,6 +19,7 @@ EStyleSheet.build({
 const AppWithNavigation = createStackNavigator({
   Home: HomeScreen,
   Films: FilmsScreen,
+  Film: FilmScreen,
 });
 
 export default class App extends React.Component {

@@ -2,37 +2,34 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FlatList } from 'react-native';
 
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { onFilmOpen } from './actions';
 import { getFilmsList } from './reducer';
 import Separator from './Separator';
 import ListItem from './ListItem';
 
-function mapStateToProps(state) {
+function mapStateToProps(state, props) {
   const filmsList = getFilmsList(state);
   return {
     items: filmsList,
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({
-    onPressFilm: onFilmOpen,
-  }, dispatch);
-}
-
 function keyExtractor(item) {
   return item.id;
 }
 
-@connect(mapStateToProps, mapDispatchToProps)
+@connect(mapStateToProps)
 class FilmsList extends React.PureComponent {
   static propTypes={
     style: PropTypes.number,
+    navigation: PropTypes.object.isRequired,
     items: PropTypes.arrayOf(PropTypes.object).isRequired,
-    onPressFilm: PropTypes.func.isRequired,
+  };
+
+  _handleItemPress = (id) => {
+    const { navigation } = this.props;
+    navigation.navigate('Film', { id });
   };
 
   _renderItem = ({ item }) => {
@@ -40,7 +37,7 @@ class FilmsList extends React.PureComponent {
     return (
       <ListItem
         {...item}
-        onPress={onPressFilm}
+        onPress={this._handleItemPress}
       />
     );
   };
